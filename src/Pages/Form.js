@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-export default function Tab1() {
+export default function Form() {
   const [formData, setFormData] = useState({ fullName: "", email: "", phone: "", address: "" });
 
   const handleSubmit = (event) => {

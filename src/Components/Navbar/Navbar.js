@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Tab1 from '../../Pages/Tab1'
-import Tab2 from '../../Pages/Tab2'
+
+import Form from '../../Pages/Form'
+import Table from '../../Pages/Table'
 
 
 export default function Navbar() {
@@ -9,8 +10,8 @@ export default function Navbar() {
     
     <>
         <Routes>
-          <Route path='/tab1' element={<Tab1/>} />
-          <Route path='/tab2' element={<Tab2/>} />
+          <Route path='/form' element={<Form/>} />
+          <Route path='/table' element={<Table/>} />
         </Routes> 
     </>
   )

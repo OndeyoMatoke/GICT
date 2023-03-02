@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-export default function Tab2() {
+export default function Table() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {

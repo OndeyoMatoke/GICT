@@ -9,11 +9,11 @@ export default function Header() {
         <nav className='header'>
             <ul>
                 <li>
-                    <Link to='tab1'>Tab1</Link>
+                    <Link to='form'>Form</Link>
                 </li>
 
                 <li>
-                    <Link to='tab2'>Tab2</Link>
+                    <Link to='table'>Table</Link>
                 </li>
             </ul>
         </nav>
