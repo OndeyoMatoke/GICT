@@ -1,66 +1,54 @@
-import React, { useState } from 'react'
+
+import React, { useState } from "react";
 
 export default function Tab1() {
+  const [formData, setFormData] = useState({ fullName: "", email: "", phone: "", address: "" });
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    const [inputs, setInputs] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        address: ''
+    console.log('fullname', 'email', 'phone', 'address')
+
+    fetch("http://developers.gictsystems.com/api/dummy/submit/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     })
 
-    const handleSubmit = (event)=>{
-        event.preventDefault()
-    }
+      .then((response) => {
+        if (response.ok) {
+          alert("Success");
+        } else {
+          alert("Validation Error");
+        }
+      })
 
-    const handleChange = (event)=>{
-        setInputs(event.target.name)
-        
-      } 
+      .catch((error) => {
+        alert("Error");
+      });
+  };
 
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>Full Name:<br/>
-            <input
-               type='text'
-               name='name'
-               value={inputs.name}
-               onChange={handleChange}
-            />
-        </label><br/><br/>
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="fullName" placeholder="your full name" 
+      value={formData.fullName} onChange={handleChange} required/><br/><br/>
 
-        <label> Email: <br/>
-            <input
-               type='text'
-               name='email'
-               value={inputs.email}
-               onChange={handleChange}
-            />
-        </label><br/><br/>
+      <input type="email" name="email" placeholder="email" 
+      value={formData.email} onChange={handleChange} required/><br/><br/>
 
-        <label>Phone:<br/>
-            <input
-               type='number'
-               name='phone'
-               value={inputs.phone}
-               onChange={handleChange}
-            />
-        </label><br/><br/>
+      <input type="tel" name="phone" placeholder="phone" 
+      value={formData.phone} onChange={handleChange} required/><br/><br/>
 
-        <label>address:<br/>
-            <input
-               type='text'
-               name='address'
-               value={inputs.address}
-               onChange={handleChange}
-            />
-        </label><br/><br/>
+      <input type="text" name="address" placeholder="address" 
+      value={formData.address} onChange={handleChange} required/><br/><br/>
 
-        <button>Submit</button>
-      </form>     
-    </>
-  )
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
